@@ -94,9 +94,9 @@ xxxx NameNode
 ## 6. Running Hive
 ```
 hadoop:~$ cd $HIVE_HOME
-hadoop:$HIVE_HOME$ hive --service hiveserver2 &
-hadoop:$HIVE_HOME$ netstat -npl | grep :10000
-hadoop:$HIVE_HOME$ cd ~
+hadoop:{$HIVE_HOME}$ hive --service hiveserver2 &
+hadoop:{$HIVE_HOME}$ netstat -npl | grep :10000
+hadoop:{$HIVE_HOME}$ cd ~
 ```
 
 
@@ -113,4 +113,4 @@ hadoop:~$ R
 # Requirement
 * Oracle VirtualBox
 * Vagrant
-* ssh / (Windows)putty or other ssh clinet
+* ssh / (Windows)putty or other ssh client
