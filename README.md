@@ -23,7 +23,7 @@ $ cd RHive-vagrant
 RHive-vagrant$ vagrant up --provider virtualbox && vagrant ssh
 ```
 
-### Vagrant Option
+### Machine Option
 * RAM 1G
 * Private IP 192.168.33.10
 * Host hadoop
