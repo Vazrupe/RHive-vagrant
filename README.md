@@ -2,7 +2,7 @@
 My RHive dev system install scripts
 
 
-# Installed
+# Installing Binaries
 * Apache Hadoop 2.7.2
 * Apache Hive 2.1.0
 * Apache Ant 1.9.7
