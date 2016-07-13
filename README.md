@@ -11,7 +11,7 @@ My RHive dev system install scripts
 
 
 # Running Steps
-## 0. Clone Git
+## 0. Cloning Git Repository
 ```
 $ git clone https://github.com/Vazrupe/RHive-vagrant
 $ cd RHive-vagrant
@@ -70,7 +70,7 @@ hadoop:~$ /scripts/install-Hadoop.sh; source ~/.bashrc
 ### Hive Setting
 | File | Name | Value |
 | ---- | ---- | ----- |
-| hadoop-env.sh | HADOOP_HOME | /home/vagrant/hadoop-2.7.2 |
+| hive-env.sh | HADOOP_HOME | /home/vagrant/hadoop-2.7.2 |
 
 ## 4. RHive Install
 ```
@@ -111,6 +111,6 @@ hadoop:~$ R
 
 
 # Requirement
-+ Oracle VirtualBox
-+ Vagrant
-+ ssh / (windows)putty or secure shell
+* Oracle VirtualBox
+* Vagrant
+* ssh / (Windows)putty or other ssh clinet
