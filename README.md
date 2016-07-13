@@ -1,5 +1,5 @@
 # RHive-vagrant
-My RHive system install scripts
+My RHive dev system install scripts
 
 
 # Installed
