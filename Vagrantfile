@@ -17,6 +17,8 @@ Vagrant.configure(2) do |config|
     # hadoop.vm.network "forwarded_port", guest: 80, host: 8080
     hadoop.vm.network "private_network", ip: "192.168.33.10"
     # hadoop.vm.network "public_network"
+    hadoop.vm.network "forwarded_port", guest: 10000, host: 5050
+    hadoop.vm.network "forwarded_port", guest: 10002, host: 5051
     hadoop.vm.hostname = "hadoop"
     
     hadoop.vm.synced_folder "script", "/scripts"
