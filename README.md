@@ -8,6 +8,8 @@ My RHive dev system install scripts
 * Apache Ant 1.9.7
 * Openjdk-8-jdk
 * R 3.3.1(latest)
+* Apache Pig 0.16.0
+* Apache Zookeeper 3.4.8
 
 
 # Running Steps
@@ -58,14 +60,14 @@ hadoop:~$ /scripts/install-Hadoop.sh; source ~/.bashrc
 | hadoop-env.sh | HADOOP_CONF_DIR | $HADOOP_HOME/etc/hadoop |
 | hadoop-env.sh | YARN_HOME | $HADOOP_HOME |
 | hadoop-env.sh | YARN_CONF_DIR | $YARN_HOME/etc/hadoop |
-| core-site.xml | fs.default.name | hdfs://0.0.0.0:19000 |
+| core-site.xml | fs.default.name | hdfs://hadoop:19000 |
 | core-site.xml | hadoop.proxyuser.vagrant.hosts | * |
 | core-site.xml | hadoop.proxyuser.vagrant.groups | * |
 | hdfs-site.xml | dfs.replication | 1 |
 | hdfs-site.xml | dfs.namenode.datanode.registration.ip-hostname-check | false |
 | hdfs-site.xml | dfs.namenode.name.dir | /home/vagrant/hadoop-2.7.2/dfs/name |
 | hdfs-site.xml | dfs.datanode.data.dir | /home/vagrant/hadoop-2.7.2/dfs/name |
-| mapred-site.xml | mapred.job.tracker | 0.0.0.0:54311 |
+| mapred-site.xml | mapred.job.tracker | hadoop:54311 |
 
 ### Hive Setting
 | File | Name | Value |
@@ -105,12 +107,50 @@ hadoop:{$HIVE_HOME}$ cd ~
 hadoop:~$ R
 > library(RHive)
 > rhive.init()
-> rhive.connect('0.0.0.0', 10000, hiveServer2=TRUE)
+> rhive.connect('hadoop', 10000, hiveServer2=TRUE)
 ```
 
+## Other 0. Install Hostmanager
+```
+$ vagrant plugin install vagrant-hostmanager
+```
+
+
+## 8. Pig Install
+```
+hadoop:~$ /scripts/install-Pig.sh; source ~/.bashrc
+hadoop:~$ pig
+grunt> ls /
+ ...
+```
+
+
+## 9. Zookeeper Install
+```
+hadoop:~$ /scripts/install-Zookeeper.sh; source ~/.bashrc
+hadoop:~$ zkServer.sh start
+hadoop:~$ jps
+...
+xxxxx QuorumPeerMain
+...
+
+hadoop:~$ zkCli.sh -server hadoop:2181
+[zk hadoop:2181(CONNECTED) 0] ls /
+[zookeeper]
+```
+
+### Zookeeper Setting
+| File | Name | Value |
+| ---- | ---- | ----- |
+| zoo.cfg | tickTime | 2000 |
+| zoo.cfg | initLimit | 10 |
+| zoo.cfg | syncLimit | 5 |
+| zoo.cfg | clientPort | 2181 |
+| zoo.cfg | dataDir | /home/vagrant/zookeeper-3.4.8/data |
+| zoo.cfg | server.1 | hadoop:2888:3888 |
 
 
 # Requirement
 * Oracle VirtualBox
-* Vagrant
+* Vagrant (+ plugin-hostmanager)
 * ssh / (Windows)putty or other ssh client

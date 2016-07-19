@@ -40,7 +40,7 @@ R_DEB="deb $MIRROR/bin/linux/ubuntu trusty/"
 SOURCE_PATH=/etc/apt/sources.list
 echo "$R_DEB" >> $SOURCE_PATH
 aptitude update
-aptitude install -y git openjdk-8-jdk r-base << EOF
+aptitude install -y git python openjdk-8-jdk r-base << EOF
 Yes
 EOF
 ###############################################################################

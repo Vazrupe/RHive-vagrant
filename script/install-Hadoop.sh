@@ -89,7 +89,7 @@ HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 HADOOP_ENV=$HADOOP_CONF_DIR/hadoop-env.sh
 echo "$BASH_BASE_CONFIG" >> $HADOOP_ENV
 
-HOST=0.0.0.0
+MASTER_HOST=`hostname`
 
 append_property() {
 NAME=`echo "$2" | sed -e 's/\//\\\\\//g'`
@@ -107,7 +107,7 @@ return 0
 ### core-site.xml Config
 CORE_SITE_PATH=$HADOOP_CONF_DIR/core-site.xml
 
-append_property $CORE_SITE_PATH fs.default.name hdfs://$HOST:19000
+append_property $CORE_SITE_PATH fs.default.name hdfs://$MASTER_HOST:19000
 append_property $CORE_SITE_PATH hadoop.proxyuser.$USER_NAME.hosts '*'
 append_property $CORE_SITE_PATH hadoop.proxyuser.$USER_NAME.groups '*'
 
@@ -128,12 +128,12 @@ MAPRED_SITE_PATH=$HADOOP_CONF_DIR/mapred-site.xml
 
 cp $MAPRED_SITE_PATH.template $MAPRED_SITE_PATH
 
-append_property $MAPRED_SITE_PATH mapred.job.tracker $HOST:54311
+append_property $MAPRED_SITE_PATH mapred.job.tracker $MASTER_HOST:54311
 
 ### slaves Config
 SLAVES_PATH=$HADOOP_CONF_DIR/slaves
 
-echo $HOST > $SLAVES_PATH
+echo $MASTER_HOST > $SLAVES_PATH
 ###############################################################################
 
 

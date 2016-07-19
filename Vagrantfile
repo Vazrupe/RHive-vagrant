@@ -4,6 +4,11 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+  
   config.vm.define "hadoop" do |hadoop|
     hadoop.vm.provider "virtualbox" do |vb|
       vb.name = "hadoop"
