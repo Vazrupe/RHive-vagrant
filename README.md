@@ -110,11 +110,6 @@ hadoop:~$ R
 > rhive.connect('hadoop', 10000, hiveServer2=TRUE)
 ```
 
-## Other 0. Install Hostmanager
-```
-$ vagrant plugin install vagrant-hostmanager
-```
-
 
 ## 8. Pig Install
 ```
@@ -148,6 +143,12 @@ hadoop:~$ zkCli.sh -server hadoop:2181
 | zoo.cfg | clientPort | 2181 |
 | zoo.cfg | dataDir | /home/vagrant/zookeeper-3.4.8/data |
 | zoo.cfg | server.1 | hadoop:2888:3888 |
+
+
+## Other 0. Install Hostmanager
+```
+$ vagrant plugin install vagrant-hostmanager
+```
 
 
 # Requirement
